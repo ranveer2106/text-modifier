@@ -25,7 +25,7 @@ export default function Form(props) {
     }
     let handleOnChange = (event) => {
         let detInpu = document.getElementById("detInpu");
-        detInpu.textContent = `${inpu.length + 1} characters and ${inpu.split(" ").length} words`
+        detInpu.textContent = `${inpu.length} characters and ${inpu.split(" ").filter((element) => { return element.length !== 0 }).length} words`
         // console.log("abe reset kyo kiya");
         // console.log(inpu.length)
         newInput(event.target.value)
@@ -80,11 +80,11 @@ export default function Form(props) {
             <div className="mb-3 container">
                 <label htmlFor="exampleFormControlTextarea1" className="form-label" style={{ color: props.color }}>Example textarea</label>
                 <textarea className="form-control" id="exampleFormControlTextarea1" onChange={handleOnChange} rows="5" value={inpu} ></textarea>
-                <button type="button" onClick={funup} className="btn btn-primary mx-3">change to upper case</button>
-                <button type="button" onClick={funlo} className="btn btn-primary mx-3">change to lower case</button>
-                <button type="button" onClick={clear} className="btn btn-primary mx-3">clear</button>
+                <button disabled={inpu.length === 0} type="button" onClick={funup} className="btn btn-primary mx-3">change to upper case</button>
+                <button disabled={inpu.length === 0} type="button" onClick={funlo} className="btn btn-primary mx-3">change to lower case</button>
+                <button disabled={inpu.length === 0} type="button" onClick={clear} className="btn btn-primary mx-3">clear</button>
                 {/* <button type="button" onClick={toggle} className="btn btn-primary mx-3" id="btn">toggle</button> */}
-                <button type="button" onClick={copy} className="btn btn-primary mx-3">copy</button>
+                <button disabled={inpu.length === 0} type="button" onClick={copy} className="btn btn-primary mx-3">copy</button>
             </div>
 
             <div className="container">
